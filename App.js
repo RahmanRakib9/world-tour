@@ -17,9 +17,36 @@ const displayCountries = countries => {
         const parentDivInfo = `
         <h1>${country.name} </h1>
         <img src='${country.flag}' id='countryFlag'/></br>
-        <button id='infoBtn'>More About </button>
+        <button id='infoBtn' onClick="displayCountryInfo('${country.callingCodes}')">More About </button>
         `
         parentDiv.innerHTML = parentDivInfo;
         grandParent.appendChild(parentDiv);
     });
+}
+
+
+// loadData according to country callingCodes
+async function displayCountryInfo(callingCodes) {
+    const res = await fetch(`https://restcountries.eu/rest/v2/callingcode/${callingCodes}`)
+    const data = await res.json();
+    handleCountryInfo(data[0]);
+    console.log(data[0]);
+}
+
+
+//display country details 
+
+const handleCountryInfo = info => {
+    const countryDetails = document.getElementById('countryDetails');
+    const detailsParent = document.createElement('div');
+    detailsParent.className='detailsParent'
+    const detailsParentInfo = `
+    <img src='${info.flag}'/>
+    <h2> ${info.name}</h2>
+    <h3>capital ${info.capital} </h3>
+    <h4>region: ${info.region} </h4>
+    <h5>population: ${info.population} </h5>
+    `
+    detailsParent.innerHTML = detailsParentInfo;
+    countryDetails.appendChild(detailsParent);
 }
