@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World Tour</title>
+    <!-- style sheets-->
+    <style>
+        #grandParent {
+            display: grid;
+            grid-template-columns: repeat(3, 2fr);
+            grid-gap: 20px;
+        }
+
+        .parentDiv {
+            border: 2px solid;
+            text-align: center;
+            border-radius: 2%;
+        }
+
+        #countryFlag {
+            height: 150px;
+            width: 200px;
+        }
+        #infoBtn{
+            background-color: blanchedalmond;
+            border-radius: 10%;
+            
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- display country details -->
+    <div id="countryDetails"></div>
+
+    <!-- display all countries -->
+    <div id="grandParent"></div>
+
+    <script src="./App.js"></script>
+</body>
+
+</html>
