@@ -30,23 +30,20 @@ async function displayCountryInfo(callingCodes) {
     const res = await fetch(`https://restcountries.eu/rest/v2/callingcode/${callingCodes}`)
     const data = await res.json();
     handleCountryInfo(data[0]);
-    console.log(data[0]);
+
 }
 
 
 //display country details 
-
 const handleCountryInfo = info => {
-    const countryDetails = document.getElementById('countryDetails');
-    const detailsParent = document.createElement('div');
-    detailsParent.className='detailsParent'
-    const detailsParentInfo = `
+    const countryDetails = document.getElementById('countryDetails')
+    const countryDetailsInfo = `
     <img src='${info.flag}'/>
     <h2> ${info.name}</h2>
-    <h3>capital ${info.capital} </h3>
+    <h3>capital: ${info.capital} </h3>
     <h4>region: ${info.region} </h4>
     <h5>population: ${info.population} </h5>
     `
-    detailsParent.innerHTML = detailsParentInfo;
-    countryDetails.appendChild(detailsParent);
+    countryDetails.innerHTML = countryDetailsInfo
+
 }
